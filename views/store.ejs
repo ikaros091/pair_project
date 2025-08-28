@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/store_style.ejs') %>
+<body>
+<%- include('./partials/navbar.ejs') %>
+
+<div class="container mt-4">
+  <div class="row">
+    <% if (currentUser && currentUser.role === 'admin') { %>
+      <div class="mb-3">
+        <a href="/store/add" class="btn btn-success">+ Add Servant</a>
+      </div>
+    <% } %>
+
+    <div class="col-md-3">
+      <form method="GET" action="/store">
+        <h5>Search</h5>
+        <input type="text" name="search" class="form-control mb-3" placeholder="Cari Servant..." value="<%= typeof search !== 'undefined' ? search : '' %>">
+        <h6>Filter by Class</h6>
+        <% category.forEach((el) => { %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="classes" value="<%= el.name %>" id="<%= el.name %>"<%= classes && classes.includes("Saber") ? "checked" : "" %>>
+          <label class="form-check-label" for="<%= el.name %>"><%= el.name %></label>
+        </div>
+        <% }); %>
+        <button type="submit" class="btn btn-primary mt-3">Apply Filter</button>
+      </form>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row g-4">
+        <% servants.forEach((servant) => { %>
+          <div class="col-md-4">
+            <div class="card product-card h-100">
+              <a href="/store/servant/<%= servant.id %>">
+                <img src="<%= servant.imageUrl %>" class="card-img-top" alt="<%= servant.name %>">
+              </a>
+        
+              <div class="card-body">
+                <a href="/store/servant/<%= servant.id %>" class="text-decoration-none text-dark">
+                  <h5 class="card-title"><%= servant.name %></h5>
+                </a>
+                <p class="card-text">Class: <%= servant?.Category?.name %></p>
+                <% if(servant.stock > 0){ %>
+                  <p class="stock">Stock: <%= servant.stock %></p>
+                <% } else { %>
+                  <p class="stock-habis">Stock Habis</p>
+                <% } %>
+                <p class="price"><%= servant.formatPrize %></p>
+
+                <div class="d-grid gap-2">
+                  <% if(servant.stock > 0){ %>
+                    <a href="/cart/add/<%= servant.id %>" class="btn btn-success">Add to Cart</a>
+                    <a href="/cart/buy/<%= servant.id %>" class="btn btn-primary">Buy</a>
+                  <% } %>
+                  <% if (currentUser && currentUser.role === 'admin') { %>
+                    <a href="/store/edit/<%= servant.id %>" class="btn btn-warning">Edit</a>
+                    <a href="/store/delete/<%= servant.id %>" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus servant ini?')">Delete</a>
+                  <% } %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <% }); %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/edit_style.ejs') %>
+<body>
+  <div class="container mt-5">
+    <h2>Edit Servant</h2>
+
+    <%- include('./partials/error.ejs') %>
+
+    <form action="/store/edit/<%= servant.id %>" method="POST" class="mt-4">
+      
+      <!-- Image Preview -->
+      <div class="mb-3 text-center">
+        <img src="<%= servant.imageUrl %>" alt="<%= servant.name %>" class="preview-img">
+      </div>
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Nama Servant</label>
+        <input type="text" name="name" id="name" class="form-control" value="<%= servant.name %>">
+      </div>
+      
+      <!-- Image URL -->
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image URL</label>
+        <input type="text" name="imageUrl" id="imageUrl" class="form-control" value="<%= servant.imageUrl %>">
+      </div>
+
+      <!-- Class -->
+      <div class="mb-3">
+        <label for="CategoryId" class="form-label">Class</label>
+        <select name="CategoryId" id="CategoryId" class="form-control">
+          <option value="">-- Pilih Class --</option>
+          <% clas.forEach((el) => { %>
+            <option value="<%= el.id %>" <%= servant.CategoryId === el.id ? "selected" : "" %>>
+                <%= el.name %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Harga</label>
+        <input type="number" name="price" id="price" class="form-control" value="<%= servant.price %>">
+      </div>
+
+      <!-- Stock -->
+      <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="stock" name="stock" value="<%= servant.stock %>" min="0">
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary">Update</button>
+      <a href="/store" class="btn btn-secondary">Batal</a>
+    </form>
+  </div>
+</body>
+</html>

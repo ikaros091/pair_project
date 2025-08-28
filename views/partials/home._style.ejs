@@ -1,0 +1,55 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .bg-image {
+      /* Ganti URL gambar sesuai kebutuhan */
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CFgpgzbnLSqOTY4bRtniglU7BvuDPMiZpA&s');
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .centered-button {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .btn-login {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .btn-login:hover {
+      background-color: rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+    }
+
+    h1 {
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>

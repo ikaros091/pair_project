@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Artoria Pendragon",
+    "price": 500000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/F4vUu7L.png",
+    "CategoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Gilgamesh",
+    "price": 800000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/WfR9hZf.png",
+    "CategoryId": 2
+  },
+  {
+    "id": 3,
+    "name": "Emiya",
+    "price": 300000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/Gv4x5vF.png",
+    "CategoryId": 2
+  },
+  {
+    "id": 4,
+    "name": "Cu Chulainn",
+    "price": 250000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/1y6x2Zk.png",
+    "CategoryId": 3
+  },
+  {
+    "id": 5,
+    "name": "Medusa",
+    "price": 350000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/zU3bWYo.png",
+    "CategoryId": 2
+  },
+  {
+    "id": 6,
+    "name": "Heracles",
+    "price": 600000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/x7KnNGD.png",
+    "CategoryId": 7
+  },
+  {
+    "id": 7,
+    "name": "Medea",
+    "price": 280000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/7W3Gszm.png",
+    "CategoryId": 5
+  },
+  {
+    "id": 8,
+    "name": "Hassan of the Cursed Arm",
+    "price": 200000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/vzQ30jA.png",
+    "CategoryId": 6
+  },
+  {
+    "id": 9,
+    "name": "Jeanne d’Arc",
+    "price": 750000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/6j9D9jW.png",
+    "CategoryId": 8
+  },
+  {
+    "id": 10,
+    "name": "Iskandar",
+    "price": 700000,
+    "stock": 1,
+    "imageUrl": "https://i.imgur.com/ahE0LoT.png",
+    "CategoryId": 4
+  }
+]

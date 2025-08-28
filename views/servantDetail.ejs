@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= servant.name %> - Servant Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e63946;
+    }
+    .stock {
+      font-weight: bold;
+      color: green;
+    }
+    .btn-qty {
+      width: 45px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('./partials/navbar.ejs') %>
+
+  <div class="container mt-5">
+    <div class="row">
+
+      <div class="col-md-6 text-center">
+        <img src="<%= servant.imageUrl %>" class="img-fluid rounded shadow" alt="<%= servant.name %>">
+      </div>
+
+      <div class="col-md-6">
+        <h6 class="text-muted">Servant Detail</h6>
+        <h2><%= servant.name %></h2>
+        <p>Class: <strong><%= servant?.Category?.name %></strong></p>
+        <p class="price"><%= servant.formatPrice %></p>
+        <p class="stock"><%= servant.stock %> in stock</p>
+
+        <form method="GET" action="/cart/add/<%= servant.id %>">
+          <div class="input-group mb-3" style="max-width: 200px;">
+            <button class="btn btn-outline-secondary" type="button" onclick="changeQty(-1)">-</button>
+            <input type="number" id="qty" name="quantity" class="form-control text-center" value="1" min="1" max="<%= servant.stock %>">
+            <button class="btn btn-outline-secondary" type="button" onclick="changeQty(1)">+</button>
+          </div>
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+          <button type="button" onclick="window.location.href='/cart/buy/<%= servant.id %>'" class="btn btn-success">Buy</button>
+        </form>
+
+        <% if (currentUser && currentUser.role === 'admin') { %>
+        <a href="/store/edit/<%= servant.id %>" class="btn btn-warning">Edit</a>
+        <a href="/store/delete/<%= servant.id %>" class="btn btn-danger" 
+           onclick="return confirm('Yakin ingin hapus servant ini?')">Delete</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function changeQty(num) {
+      let qty = document.getElementById("qty");
+      if (!qty) return;
+      let val = parseInt(qty.value) + num;
+      let max = parseInt(qty.max);
+      let min = parseInt(qty.min);
+
+      if (val < min) val = min;
+      if (val > max) val = max;
+
+      qty.value = val;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
